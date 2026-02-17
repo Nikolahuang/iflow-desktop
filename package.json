@@ -1,0 +1,65 @@
+{
+  "name": "iflow-desktop",
+  "version": "1.0.0",
+  "description": "心流AI助手桌面客户端 - 让知识随心流动",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build": "electron-builder --win --mac",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "pack": "electron-builder --dir"
+  },
+  "author": "iFlow Team",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.3.1",
+    "electron-builder": "^25.1.8"
+  },
+  "dependencies": {
+    "electron-log": "^5.3.4"
+  },
+  "build": {
+    "appId": "com.iflow.desktop",
+    "productName": "心流AI助手",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.png"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        },
+        {
+          "target": "zip",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "category": "public.app-category.productivity"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "心流AI助手"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "assets/**/*"
+    ]
+  }
+}
