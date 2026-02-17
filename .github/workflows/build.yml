@@ -35,12 +35,14 @@ jobs:
       - name: Build for Windows
         if: matrix.platform == 'win'
         run: npm run build:win
+        timeout-minutes: 15
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build for macOS
         if: matrix.platform == 'mac'
         run: npm run build:mac
+        timeout-minutes: 20
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
