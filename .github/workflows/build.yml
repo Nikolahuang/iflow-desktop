@@ -29,7 +29,8 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --prefer-offline
+        timeout-minutes: 10
 
       - name: Build for Windows
         if: matrix.platform == 'win'
